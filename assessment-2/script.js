@@ -12,10 +12,17 @@ const BMI_RANGE = [18.5, 24.9, 29.9, 34.9, 39.9];
 const inputFile = process.argv[2]
 const outputFile = process.argv[3] || "./output.json";
 
+const inputFilePath = path.join(__dirname + "/" + inputFile);
+const outputFilePath = path.join(__dirname + "/" + outputFile)
+
 if (!inputFile) {
     throw Error("No Input FileName Provided")
 }
-console.log("Script Ran")
+
+if (!fs.existsSync(inputFilePath)) {
+    throw Error("Input File doesn't exist")
+}
+
 try {
     //Parse Streamed JSON
     const inputStream = fs.createReadStream(path.join(__dirname + "/" + inputFile)).pipe(JSONStream.parse("."))
