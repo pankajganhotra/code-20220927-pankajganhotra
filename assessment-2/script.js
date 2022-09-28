@@ -15,7 +15,7 @@ const outputFile = process.argv[3] || "./output.json";
 if (!inputFile) {
     throw Error("No Input FileName Provided")
 }
-
+console.log("Script Ran")
 try {
     //Parse Streamed JSON
     const inputStream = fs.createReadStream(path.join(__dirname + "/" + inputFile)).pipe(JSONStream.parse("."))
@@ -26,7 +26,7 @@ try {
     inputStream
         .pipe(es.mapSync(calculateBMIInfo))
         .pipe(es.mapSync(item=>{
-            if (item.bmi_category === 'Moderately Obese') overweight_count++;
+            if (item.bmi_category === 'OverWeight') overweight_count++;
             return item;
         }))
         .pipe(JSONStream.stringify())
@@ -34,7 +34,6 @@ try {
             outputStream.write(d)
         }))
         .on("end", () => {
-            console.log("Input Over")
             outputStream.write(`,"overweight_count":${overweight_count}}`)
         })
 } catch (err) {
