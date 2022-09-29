@@ -4,7 +4,7 @@ export function ImageContainer(props) {
     return (
         <div className='img_container'>
             <img src={props.src} />
-            <div className='glass floater'>
+            <div className='floater'>
                 <p className={props.description ? "subtitle" : ""}>{props.title}</p>
                 {props.options && (
                     <div className='btn_group'>
