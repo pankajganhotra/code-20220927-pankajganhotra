@@ -20,7 +20,8 @@ if (!inputFile) {
 }
 
 if (!fs.existsSync(inputFilePath)) {
-    throw Error("Input File doesn't exist")
+    console.log(inputFile)
+    throw Error(inputFilePath + "Input File doesn't exist")
 }
 
 try {
