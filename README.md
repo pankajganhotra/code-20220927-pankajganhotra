@@ -92,10 +92,13 @@ Install the module required by running the CMD below
 
 >npm install
 
+Example Test Case (Will test on tests/input.json)
+
+>npm run test
+
 Run the node js file by using the CMD below (Provide File Path for Input and Output)
 
 >node script.js path/to/input.json  /path/to/output.json
-
 
 Example:
 ```
